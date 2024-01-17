@@ -8,7 +8,7 @@ import { httpRequest } from "../utils/httpRequest";
 export default class UserService {
   getUserByEmail = async (email: string) => {
     const userServiceUrl = config.get<string>("userServiceUrl");
-    return httpRequest("POST", `${userServiceUrl}/api/user`, { email });
+    return httpRequest("POST", `${userServiceUrl}/user`, { email });
   };
 
   signAccessToken = async (user: UserSI) => {

@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.use(deserializeUser);
 
-app.use("/api", indexRouter);
+app.use("/auth/api", indexRouter);
 
 app.use(errorHandler);
 

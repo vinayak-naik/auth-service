@@ -8,7 +8,7 @@ import { httpRequest } from "../utils/httpRequest";
 export default class MicroserviceService {
   getMicroserviceById = async (id: string) => {
     const microserviceServiceUrl = config.get<string>("userServiceUrl");
-    return httpRequest("GET", `${microserviceServiceUrl}/api/microservice/${id}`, {});
+    return httpRequest("GET", `${microserviceServiceUrl}/microservice/${id}`, {});
   };
 
   signAccessToken = async (microservice: MicroserviceSI) => {

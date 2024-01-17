@@ -9,12 +9,12 @@ import { httpRequest } from "../utils/httpRequest";
 export default class AdminService<T> {
   getAdminByEmail = async (email: string) => {
     const userServiceUrl = config.get<string>("userServiceUrl");
-    return httpRequest("POST", `${userServiceUrl}/api/admin`, { email });
+    return httpRequest("POST", `${userServiceUrl}/admin`, { email });
   };
 
   updateAdminByEmail = async (email: string, verificationCode: string) => {
     const userServiceUrl = config.get<string>("userServiceUrl");
-    return httpRequest("PATCH", `${userServiceUrl}/api/admin/update`, { email, verificationCode });
+    return httpRequest("PATCH", `${userServiceUrl}/admin/update`, { email, verificationCode });
   };
 
   // getAdmin = async (data: T): Promise<T> => {
