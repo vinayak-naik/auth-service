@@ -17,7 +17,7 @@ export default class AdminController {
 
   loginAdmin = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const failedMessage = "Invalid email or password";
+      const failedMessage = "Invalid email";
       // Check existing admin
       const responseData = await this.service.getAdminByEmail(req.body.email);
       const admin = responseData.data.data;
@@ -37,13 +37,15 @@ export default class AdminController {
       // Create email template for OTP
       const template = generateEmailTemplateForOTP(admin.firstName, admin.lastName, otp);
 
+      // ======UPDATE REQUIRED=====
       // Send OTP to admin email
-      const response = (await sendEmail({
-        to: admin.email,
-        from: config.get("senderEmail"),
-        subject: "Email Verification, Sanjeevini",
-        html: template,
-      })) as boolean;
+      const response = true as boolean;
+      // const response = (await sendEmail({
+      //   to: admin.email,
+      //   from: config.get("senderEmail"),
+      //   subject: "Email Verification, Sanjeevini",
+      //   html: template,
+      // })) as boolean;
 
       // If failed to send OTP
       if (!response) {
@@ -72,8 +74,10 @@ export default class AdminController {
         return;
       }
 
+      // ======UPDATE REQUIRED=====
       // Compare verification code
-      const compare = (await bcrypt.compare(req.body.verificationCode, admin.verificationCode)) as boolean;
+      const compare = true as boolean;
+      // const compare = (await bcrypt.compare(req.body.verificationCode, admin.verificationCode)) as boolean;
 
       // If verification code doesn't match
       if (!compare) {
